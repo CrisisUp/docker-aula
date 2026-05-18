@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Site no Docker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f0f4f8;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 40px 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 480px;
+    }
+    h1 { color: #2d6a4f; margin-bottom: 8px; }
+    p  { color: #555; line-height: 1.6; }
+    .badge {
+      display: inline-block;
+      background: #d8f3dc;
+      color: #1b4332;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🐳 Olá, Docker!</h1>
+    <p>Esta página está sendo servida pelo <strong>Nginx</strong> dentro de um container Docker.</p>
+    <p>Edite o arquivo <code>site/index.html</code> e recarregue para ver as mudanças.</p>
+    <span class="badge">Container rodando com sucesso</span>
+  </div>
+</body>
+</html>
