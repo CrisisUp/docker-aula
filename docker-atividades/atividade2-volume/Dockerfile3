@@ -1,0 +1,49 @@
+# --- ETAPA DE SEGURANÇA E MONITORAMENTO: DOCKERFILE v3 ---
+
+# FROM python:3.12-slim
+
+# 1. SEGURANÇA: Criação de um usuário não-root
+# Rodar como root é perigoso em produção.
+
+# RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+
+# Configurações de ambiente
+
+# ENV PYTHONDONTWRITEBYTECODE=1 \
+    # PYTHONUNBUFFERED=1 \
+    # DADOS_DIR=/app/dados
+
+# WORKDIR /app
+
+# Instalação de dependências
+
+# RUN apt-get update \
+    # && apt-get install -y --no-install-recommends sqlite3 \
+    # && rm -rf /var/lib/apt/lists/*
+
+# Copia o script
+
+# COPY app_v3.py .
+
+# 2. PERMISSÕES: Garantir que o appuser possa escrever na pasta de dados
+# Criamos a pasta antes e mudamos o dono para o novo usuário.
+
+# RUN mkdir -p /app/dados && chown -R appuser:appgroup /app/dados
+
+# 3. MONITORAMENTO: Healthcheck
+# O Docker vai rodar esse comando periodicamente para saber se o app está vivo.
+
+# HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    # CMD python app_v3.py --health
+
+# Define o volume
+
+# VOLUME ["/app/dados"]
+
+# 4. MUDANÇA DE USUÁRIO: A partir daqui, nada roda como root
+
+# USER appuser
+
+# Execução
+
+# CMD ["python", "app_v3.py"]

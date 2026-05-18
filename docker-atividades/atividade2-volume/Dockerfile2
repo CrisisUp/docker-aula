@@ -1,0 +1,30 @@
+# --- ETAPA DE EVOLUÇÃO: DOCKERFILE v2 ---
+
+# FROM python:3.12-slim
+
+# LABEL description="Versão evoluída com tratamento de erros e banco parametrizável"
+# LABEL version="2.0"
+
+# Variáveis de Ambiente
+# Agora incluímos DB_NAME como uma variável configurável
+
+# ENV PYTHONDONTWRITEBYTECODE=1 \
+    # PYTHONUNBUFFERED=1 \
+    # DADOS_DIR=/app/dados \
+    # DB_NAME=projeto_final.db
+
+# WORKDIR /app
+
+# Instalação mínima necessária
+# RUN apt-get update \
+    # && apt-get install -y --no-install-recommends sqlite3 \
+    # && rm -rf /var/lib/apt/lists/*
+
+# Copiamos o NOVO script
+# COPY app_v2.py .
+
+# Definimos o volume
+# VOLUME ["/app/dados"]
+
+# Executamos o novo arquivo
+# CMD ["python", "app_v2.py"]
