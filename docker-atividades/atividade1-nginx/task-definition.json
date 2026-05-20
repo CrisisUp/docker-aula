@@ -1,0 +1,28 @@
+{
+  "family": "meu-site-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::375780798551:role/LabRole",
+  "containerDefinitions": [
+    {
+      "name": "meu-site",
+      "image": "375780798551.dkr.ecr.us-east-1.amazonaws.com/meu-site:latest",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/meu-site",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

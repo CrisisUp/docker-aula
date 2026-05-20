@@ -1,0 +1,37 @@
+{
+  "family": "atividade2-volume-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::375780798551:role/LabRole",
+  "taskRoleArn": "arn:aws:iam::375780798551:role/LabRole",
+  "containerDefinitions": [
+    {
+      "name": "app-volume",
+      "image": "SUA_CONTA_ID.dkr.ecr.us-east-1.amazonaws.com/atividade2-volume:latest",
+      "essential": true,
+      "mountPoints": [
+        {
+          "sourceVolume": "dados-volume",
+          "containerPath": "/app/dados",
+          "readOnly": false
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/atividade2-volume",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "dados-volume",
+      "host": {}
+    }
+  ]
+}
